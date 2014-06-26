@@ -1,0 +1,6 @@
+sudo pip install mongodb
+sudo pip install formencode
+sudo pip install pymongo
+sudo pip install bson
+sudo pip install jinja2
+sudo pip install mongoengine
