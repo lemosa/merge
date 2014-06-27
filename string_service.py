@@ -1,3 +1,5 @@
+import textwrap
+
 import tornado.httpserver
 import tornado.options
 import tornado.ioloop
@@ -6,13 +8,19 @@ import tornado.web
 from tornado.options import define,options
 define("port",default=8000,help="run on the port",type=int)
 
-class IndexHandler(tornado.web.RequestHandler):
-    def get(self):
-        greeting = self.get_argument('greeting','hello')
-        self.write(greeting + " Hello, world")
+class ReverseHandler(tornado.web.RequestHandler):
+    def get(self,input):
+        self.write(input[::-1])
+
+class WrapHandler(tornado.web.RequestHandler):
+    def post(self):
+        text = self.get_argument('text')
+        width = self.get_argument('width',40)
+        self.write(textwrap.fill(text,int(width)))
 
 application = tornado.web.Application([
-    (r"/", IndexHandler),
+    (r"/reverse/(\w+)", ReverseHandler),
+    (r"/wrap", WrapHandler),
 ])
 
 if __name__ == "__main__":
