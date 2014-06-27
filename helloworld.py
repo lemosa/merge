@@ -10,6 +10,8 @@ class IndexHandler(tornado.web.RequestHandler):
     def get(self):
         greeting = self.get_argument('greeting','hello')
         self.write(greeting + " Hello, world")
+    def write_error(self,status_code,**kwargs):
+        self.write("Gosh darnit,user! You cause a %d error." % status_code)
 
 application = tornado.web.Application([
     (r"/", IndexHandler),
