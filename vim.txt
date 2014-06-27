@@ -1,0 +1,22 @@
+The default vim in the ubuntu is vim.tiny.It's very simple,not include the syntax,shiftwidth and so on.
+
+reinstall the vim use the command
+
+sudo apt-get install vim
+
+after installed the vimfull,you can use the :scriptnames find the path of the config file like below.
+
+/usr/share/vim/vimrc
+.......
+
+
+:version command will be display
+
+syntax on openning the color for your code.
+
+set tabstop
+set softtabstop
+set shiftwidth=4
+set autoindent
+set number
+set roler
