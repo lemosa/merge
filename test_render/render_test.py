@@ -8,21 +8,13 @@ import tornado.web
 from tornado.options import define,options
 define("port",default=8001,help="run on the given port",type=int)
 
-class IndexHandler(tornado.web.RequestHandler):
+class BookHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render('index.html')
+        self.render('book.html',title="Home Page",header="Books that are great",books=["Learning Python","Programming Collective Intelligence","Restful Web Services"])
 
-class PoemPageHandler(tornado.web.RequestHandler):
-    def post(self):
-        noun1 = self.get_argument('noun1')
-        noun2 = self.get_argument('noun2')
-        verb = self.get_argument('verb')
-        noun3 = self.get_argument('noun3')
-        self.render('poem.html',roads=noun1,wood=noun2,made=verb,difference=noun3)
 
 application = tornado.web.Application(handlers=[
-    (r'/',IndexHandler),
-    (r'/poem',PoemPageHandler)],
+    (r'/book',BookHandler)],
     template_path=os.path.join(os.path.dirname(__file__),"templates")
 )
           
