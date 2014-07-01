@@ -7,10 +7,10 @@
   <img src="{{ book["image"] }}" class="book_image"/>
       <div class="book_details">
           <div class="book_date_released">Released: {{ book["date_released"] }}</div>
-	  <div class="book_date_added">Added:  {{ locale.format_date(book["date_added"],relative=False }}</div>
+	  <div class="book_date_added">Added:  {{ locale.format_date(book["date_added"],relative=False) }}</div>
 	  <h5>Description:</h5>
 	      <div class="book_doby">{% raw book["description"] %} </div>
-	      <p><a href="edit/{{book['isbn']}}">Edit</a></p>
+	      <p><a href="/edit/{{book['isbn']}}">Edit</a></p>
       </div>
 
 </div>
